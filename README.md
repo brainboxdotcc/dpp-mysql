@@ -1,7 +1,6 @@
-# dpp-mysql
-A simple asynchronous MySQL wrapper for D++ bots
+# A simple asynchronous MySQL wrapper for D++ bots
 
-Simply take the source files and add them to your D++ bot project.
+Simply take the source files and add them to your D++ bot project. This is a slightly modified version of what is used in my own bots.
 
 This wrapper supports both synchronous (blocking) API and asynchronous (coroutine) API. All queries done through this wrapper use cached prepared statements, this will consume a very small amount of ram for a sometimes drastic increase in performance.
 
