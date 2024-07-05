@@ -52,12 +52,12 @@ Also create a `config.json` file. To use unix sockets to connect, set the port v
 {
     "token": "discord bot token",
     "database": {
-            "host": "hostname",
-            "username": "database username",
-            "password": "database password",
-            "database": "schema name",
-            "port": 0,
-            "socket": "/path/to/mysqld.sock"
+        "host": "hostname",
+        "username": "database username",
+        "password": "database password",
+        "database": "schema name",
+        "port": 0,
+        "socket": "/path/to/mysqld.sock"
     }
 }
 ```
