@@ -29,10 +29,7 @@ This is an example of using the asynchronous interface:
 #include "config.h"
 
 int main(int argc, char const *argv[]) {
-	std::setlocale(LC_ALL, "en_GB.UTF-8");
-
 	config::init("config.json");
-		
 	dpp::cluster bot(config::get("token"));
 
 	bot.on_ready([&bot](const dpp::ready_t& event) -> dpp::task<void> {
@@ -45,7 +42,6 @@ int main(int argc, char const *argv[]) {
 	});
 
 	db::init(bot);
-
 	bot.start(dpp::st_wait);
 }
 ```
