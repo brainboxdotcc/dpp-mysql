@@ -31,7 +31,7 @@ This is an example of using the asynchronous interface:
 int main(int argc, char const *argv[]) {
 	std::setlocale(LC_ALL, "en_GB.UTF-8");
 
-	config::init("../config.json");
+	config::init("config.json");
 		
 	dpp::cluster bot(config::get("token"));
 
@@ -47,5 +47,21 @@ int main(int argc, char const *argv[]) {
 	db::init(bot);
 
 	bot.start(dpp::st_wait);
+}
+```
+
+Also create a `config.json` file. To use unix sockets to connect, set the port value to 0.
+
+```json
+{
+	"token": "discord bot token",
+        "database": {
+                "host": "hostname",
+                "username": "database username",
+                "password": "database password",
+                "database": "schema name",
+                "port": 0,
+		"socket": "/path/to/mysqld.sock"
+        }
 }
 ```
