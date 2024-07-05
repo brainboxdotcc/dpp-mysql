@@ -46,7 +46,7 @@ int main(int argc, char const *argv[]) {
 }
 ```
 
-Also create a `config.json` file. To use unix sockets to connect, set the port value to 0.
+Also create a `config.json` file. To use unix sockets to connect, set the port value to `0` and the hostname value to `localhost`.
 
 ```json
 {
