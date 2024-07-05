@@ -13,8 +13,40 @@ No support is offered for this software at present. Your mileage may vary. I hav
 
 libmysqlclient-dev
 D++
+fmtlib
 A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface
 
 ## Documentation
 
 All functions in the `db` namespace have Doxygen comment blocks.
+
+## Using the wrapper
+
+This is an example of using the asynchronous interface:
+
+```cpp
+#include <dpp/dpp.h>
+#include "database.h"
+#include "config.h"
+
+int main(int argc, char const *argv[]) {
+	std::setlocale(LC_ALL, "en_GB.UTF-8");
+
+	config::init("../config.json");
+		
+	dpp::cluster bot(config::get("token"));
+
+	bot.on_ready([&bot](const dpp::ready_t& event) -> dpp::task<void> {
+		auto rs = co_await db::co_query("SELECT * FROM bigtable WHERE bar = ?", { "baz" });
+		std::cout << "Number of rows returned: " << rs.size() << "\n";
+		if (!rs.empty()) {
+			std::cout << "First row 'bar' value: " << rs[0].at("bar") << "\n";
+		}
+		co_return;
+	});
+
+	db::init(bot);
+
+	bot.start(dpp::st_wait);
+}
+```

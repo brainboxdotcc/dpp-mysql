@@ -18,9 +18,8 @@
  *
  ************************************************************************************/
 
-#include <ssod/ssod.h>
-#include <ssod/database.h>
-#include <ssod/config.h>
+#include "database.h"
+#include "config.h"
 #include <mysql/mysql.h>
 #include <fmt/format.h>
 #include <unordered_map>
