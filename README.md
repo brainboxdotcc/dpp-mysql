@@ -57,7 +57,7 @@ Also create a `config.json` file. To use unix sockets to connect, set the port v
                 "password": "database password",
                 "database": "schema name",
                 "port": 0,
-		"socket": "/path/to/mysqld.sock"
+                "socket": "/path/to/mysqld.sock"
         }
 }
 ```
