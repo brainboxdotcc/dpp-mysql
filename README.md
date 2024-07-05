@@ -11,10 +11,10 @@ No support is offered for this software at present. Your mileage may vary. I hav
 
 ## Dependencies
 
-libmysqlclient-dev
-D++
-fmtlib
-A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface
+* libmysqlclient-dev
+* D++
+* fmtlib
+* A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface
 
 ## Documentation
 
