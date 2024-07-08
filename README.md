@@ -1,7 +1,6 @@
-# dpp-mysql
-A simple asynchronous MySQL wrapper for D++ bots
+# A simple asynchronous MySQL wrapper for D++ bots
 
-Simply take the source files and add them to your D++ bot project.
+Simply take the source files and add them to your D++ bot project. This is a slightly modified version of what is used in my own bots.
 
 This wrapper supports both synchronous (blocking) API and asynchronous (coroutine) API. All queries done through this wrapper use cached prepared statements, this will consume a very small amount of ram for a sometimes drastic increase in performance.
 
@@ -11,10 +10,10 @@ No support is offered for this software at present. Your mileage may vary. I hav
 
 ## Dependencies
 
-libmysqlclient-dev
-D++
-fmtlib
-A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface
+* libmysqlclient-dev
+* D++
+* fmtlib
+* A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface
 
 ## Documentation
 
@@ -30,10 +29,7 @@ This is an example of using the asynchronous interface:
 #include "config.h"
 
 int main(int argc, char const *argv[]) {
-	std::setlocale(LC_ALL, "en_GB.UTF-8");
-
-	config::init("../config.json");
-		
+	config::init("config.json");
 	dpp::cluster bot(config::get("token"));
 
 	bot.on_ready([&bot](const dpp::ready_t& event) -> dpp::task<void> {
@@ -46,7 +42,22 @@ int main(int argc, char const *argv[]) {
 	});
 
 	db::init(bot);
-
 	bot.start(dpp::st_wait);
+}
+```
+
+Also create a `config.json` file. To use unix sockets to connect, set the port value to `0` and the hostname value to `localhost`.
+
+```json
+{
+    "token": "discord bot token",
+    "database": {
+        "host": "hostname",
+        "username": "database username",
+        "password": "database password",
+        "database": "schema name",
+        "port": 0,
+        "socket": "/path/to/mysqld.sock"
+    }
 }
 ```
