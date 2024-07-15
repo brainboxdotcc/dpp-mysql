@@ -33,11 +33,18 @@ int main(int argc, char const *argv[]) {
 	dpp::cluster bot(config::get("token"));
 
 	bot.on_ready([&bot](const dpp::ready_t& event) -> dpp::task<void> {
+
 		auto rs = co_await db::co_query("SELECT * FROM bigtable WHERE bar = ?", { "baz" });
+		if (!rs.error.empty()) {
+			std::cout << "SQL error: " << rs.error << "\n";
+			co_return;
+		}
+
 		std::cout << "Number of rows returned: " << rs.size() << "\n";
 		if (!rs.empty()) {
 			std::cout << "First row 'bar' value: " << rs[0].at("bar") << "\n";
 		}
+
 		co_return;
 	});
 
