@@ -28,10 +28,9 @@ var NAVTREE =
     [ "A simple asynchronous MySQL wrapper for D++ bots", "index.html", [
       [ "Documentation", "index.html#autotoc_md1", null ],
       [ "Dependencies", "index.html#autotoc_md2", null ],
-      [ "Documentation", "index.html#autotoc_md3", null ],
-      [ "Using the wrapper", "index.html#autotoc_md4", [
-        [ "Simple Queries", "index.html#autotoc_md5", null ],
-        [ "Using Transactions", "index.html#autotoc_md6", null ]
+      [ "Using the wrapper", "index.html#autotoc_md3", [
+        [ "Simple Queries", "index.html#autotoc_md4", null ],
+        [ "Using Transactions", "index.html#autotoc_md5", null ]
       ] ]
     ] ],
     [ "Deprecated List", "deprecated.html", null ],

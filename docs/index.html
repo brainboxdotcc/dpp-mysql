@@ -103,11 +103,8 @@ Dependencies</h1>
 <li>A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Documentation</h1>
-<p>All functions in the <code>db</code> namespace have Doxygen comment blocks.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
 Using the wrapper</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Simple Queries</h2>
 <p>This is an example of using the asynchronous interface:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;dpp/dpp.h&gt;</span></div>
@@ -153,7 +150,7 @@ Simple Queries</h2>
 <div class="line">        &quot;socket&quot;: &quot;/path/to/mysqld.sock&quot;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
 Using Transactions</h2>
 <p>To use transactions, wrap the transaction in the <code><a class="el" href="namespacedb.html#a2b4f92b15fde6491a19818b96b0d79d9" title="Start an SQL transaction. SQL transactions are atomic in nature, ALL other queries will be forced to ...">db::transaction</a></code> function, and use only the <code><a class="el" href="namespacedb.html#a8e64d322c430542846327f26e9d00ff6" title="Run a mysql query, with automatic escaping of parameters to prevent SQL injection.">db::query</a></code> function within it for queries. Return true to commit the transaction, or throw any exception or return false to roll back the transaction.</p>
 <p>Note that during a transaction all other queries will be forced to wait until the transaction is completed. Transactions are asynchronous, so use the callback to be notified when it completes, or use co_transaction as below:</p>
@@ -184,7 +181,7 @@ Using Transactions</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 15 2024 14:16:40 for DPP-MySQL by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 15 2024 14:18:07 for DPP-MySQL by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

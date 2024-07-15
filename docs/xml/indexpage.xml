@@ -26,12 +26,8 @@
 </para>
 </sect1>
 <sect1 id="index_1autotoc_md3">
-<title>Documentation</title>
-<para>All functions in the <computeroutput>db</computeroutput> namespace have Doxygen comment blocks.</para>
-</sect1>
-<sect1 id="index_1autotoc_md4">
 <title>Using the wrapper</title>
-<sect2 id="index_1autotoc_md5">
+<sect2 id="index_1autotoc_md4">
 <title>Simple Queries</title>
 <para>This is an example of using the asynchronous interface:</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&lt;dpp/dpp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -76,7 +72,7 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="index_1autotoc_md6">
+<sect2 id="index_1autotoc_md5">
 <title>Using Transactions</title>
 <para>To use transactions, wrap the transaction in the <computeroutput><ref refid="namespacedb_1a2b4f92b15fde6491a19818b96b0d79d9" kindref="member">db::transaction</ref></computeroutput> function, and use only the <computeroutput><ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query</ref></computeroutput> function within it for queries. Return true to commit the transaction, or throw any exception or return false to roll back the transaction.</para>
 <para>Note that during a transaction all other queries will be forced to wait until the transaction is completed. Transactions are asynchronous, so use the callback to be notified when it completes, or use co_transaction as below:</para>
