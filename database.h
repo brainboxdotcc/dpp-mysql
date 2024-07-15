@@ -63,6 +63,14 @@ namespace db {
 			return error.empty();
 		}
 
+		/**
+		 * Returns true if the query succeeded
+		 * @return true if no error
+		 */
+		[[nodiscard]] inline bool ok() const {
+			return error.empty();
+		}
+
 
 		/**
 		 * Get a row by index
@@ -125,7 +133,7 @@ namespace db {
 		}
 	};
 
-
+	using sql_query_callback = std::function<void(const resultset&)>;
 
 	/**
 	 * @brief Possible parameter types for SQL parameters
@@ -189,6 +197,22 @@ namespace db {
 	 */
 	resultset query(const std::string &format, const paramlist &parameters = {});
 
+	/**
+	 * @brief Run a mysql query asynchronously, with automatic escaping of parameters
+	 * to prevent SQL injection. Call the callback on completion
+	 * 
+	 * @param format Format string, where each parameter should be indicated by a ? symbol
+	 * @param parameters Parameters to prepare into the query in place of the ?'s
+	 * @param cb Callback to call on completion of the query. The callback will be passed
+	 * the resultset as its parameter.
+	 * 
+	 * The parameters given should be a vector of strings. You can instantiate this using "{}".
+	 * The queries are cached as prepared statements and therefore do not need quote symbols
+	 * to be placed around parameters in the query. These will be automatically added if required.
+	 */
+	void query_callback(const std::string &format, const paramlist &parameters, const sql_query_callback& cb);
+
+
 #ifdef DPP_CORO
 	/**
 	 * @brief Run a mysql query, with automatic escaping of parameters to prevent SQL injection.
@@ -217,6 +241,7 @@ namespace db {
 	 */
 	dpp::async<resultset> co_query(const std::string &format, const paramlist &parameters = {});
 #endif
+
 	/**
 	 * @brief Run a mysql query, with automatic escaping of parameters to prevent SQL injection.
 	 * 
@@ -283,6 +308,31 @@ namespace db {
 	 * will be forced to wait.
 	 *
 	 * @param closure The transactional code to execute.
+	 * @param callback Callback to call when the transaction completes
+	 *
+	 * @note The closure should only ever execute queries using db::query(),
+	 * it should NOT use async queries/co_query() as these cannot be executed
+	 * atomically.
+	 * Returning false from the closure, or throwing any exception at all
+	 * will roll back the transaction, else it will be committed when the
+	 * closure ends.
+	 * @warning The coroutine will execute asynchronously in a different thread.
+	 * You should use the callback to be notified when it completes. The resultset
+	 * passed as the parameter will be empty.
+	 */
+	void transaction(std::function<bool()> closure, sql_query_callback callback = {});
+
+#ifdef DPP_CORO
+	/**
+	 * @brief Start an SQL transaction in a coroutine that can be awaited.
+	 * SQL transactions are atomic in nature, ALL other queries will be forced
+	 * to wait. The transaction will be inserted into the queue to run as one atomic
+	 * operation, meaning that db::co_query cannot disrupt it or insert queries in
+	 * the middle of it, and db::query function calls that are not within the closure
+	 * will be forced to wait.
+	 *
+	 * @param closure The transactional code to execute.
+	 * @return Awaitable, returns an empty resultset on completion of transaction
 	 *
 	 * @note The closure should only ever execute queries using db::query(),
 	 * it should NOT use async queries/co_query() as these cannot be executed
@@ -291,6 +341,6 @@ namespace db {
 	 * will roll back the transaction, else it will be committed when the
 	 * closure ends.
 	 */
-	void transaction(std::function<bool()> closure);
-
+	dpp::async<resultset> co_transaction(std::function<bool()> closure);
+#endif
 };
