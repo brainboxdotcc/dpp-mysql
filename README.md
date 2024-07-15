@@ -68,3 +68,29 @@ Also create a `config.json` file. To use unix sockets to connect, set the port v
     }
 }
 ```
+
+To use transactions, wrap the transaction in the `db::transaction` function, and use only the `db::query` function within it for queries. Return true to commit the transaction, or throw any exception or return false to roll back the transaction.
+
+Note that during a transaction all other queries will be forced to wait until the transaction is completed.
+
+```cpp
+#include <dpp/dpp.h>
+#include "database.h"
+#include "config.h"
+
+int main(int argc, char const *argv[]) {
+	config::init("config.json");
+	dpp::cluster bot(config::get("token"));
+
+	bot.on_ready([&bot](const dpp::ready_t& event) {
+		db::transaction([event]() -> bool {
+			auto rs = db::query("SELECT current FROM data");
+			db::query("UPDATE data SET previous = ?", { rs[0].at("data") });
+			return true;
+		});
+	});
+
+	db::init(bot);
+	bot.start(dpp::st_wait);
+}
+```
