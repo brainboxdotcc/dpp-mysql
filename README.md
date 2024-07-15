@@ -21,6 +21,8 @@ All functions in the `db` namespace have Doxygen comment blocks.
 
 ## Using the wrapper
 
+### Simple Queries
+
 This is an example of using the asynchronous interface:
 
 ```cpp
@@ -68,6 +70,8 @@ Also create a `config.json` file. To use unix sockets to connect, set the port v
     }
 }
 ```
+
+### Using Transactions
 
 To use transactions, wrap the transaction in the `db::transaction` function, and use only the `db::query` function within it for queries. Return true to commit the transaction, or throw any exception or return false to roll back the transaction.
 
