@@ -42,14 +42,17 @@ namespace db {
 	 * and push_back().
 	 */
 	struct resultset {
+
 		/**
 		 * Row values
 		 */
 		std::vector<row> rows;
+
 		/**
 		 * Error message of last query or an empty string on success
 		 */
 		std::string error;
+
 		/**
 		 * Number of affected rows, if an UPDATE, DELETE, INSERT
 		 */
@@ -64,15 +67,6 @@ namespace db {
 		}
 
 		/**
-		 * Returns true if the query succeeded
-		 * @return true if no error
-		 */
-		[[nodiscard]] inline bool ok() const {
-			return error.empty();
-		}
-
-
-		/**
 		 * Get a row by index
 		 * @param index row to retrieve
 		 * @return row
@@ -83,7 +77,7 @@ namespace db {
 
 		/**
 		 * Get a row by index with range checking
-		 * @param index row to rerieve
+		 * @param index row to retrieve
 		 * @return row
 		 */
 		[[nodiscard]] inline const row& at(size_t index) const {
@@ -124,15 +118,26 @@ namespace db {
 			return rows.end();
 		}
 
+		/**
+		 * True if the recordset is empty
+		 * @return true if empty
+		 */
 		[[nodiscard]] inline bool empty() const {
 			return rows.empty();
 		}
 
+		/**
+		 * Number of rows in the recordset
+		 * @return row count
+		 */
 		[[nodiscard]] inline size_t size() const {
 			return rows.size();
 		}
 	};
 
+	/**
+	 * @brief A callback which happens when an asynchronous SQL query is completed
+	 */
 	using sql_query_callback = std::function<void(const resultset&)>;
 
 	/**
@@ -200,18 +205,20 @@ namespace db {
 	/**
 	 * @brief Run a mysql query asynchronously, with automatic escaping of parameters
 	 * to prevent SQL injection. Call the callback on completion
-	 * 
+	 *
 	 * @param format Format string, where each parameter should be indicated by a ? symbol
 	 * @param parameters Parameters to prepare into the query in place of the ?'s
 	 * @param cb Callback to call on completion of the query. The callback will be passed
 	 * the resultset as its parameter.
-	 * 
+	 *
 	 * The parameters given should be a vector of strings. You can instantiate this using "{}".
 	 * The queries are cached as prepared statements and therefore do not need quote symbols
 	 * to be placed around parameters in the query. These will be automatically added if required.
+	 *
+	 * @note If you can you should use co_query instead to avoid callback hell. co_query uses this
+	 * internally, wrapping it with dpp::async<>.
 	 */
 	void query_callback(const std::string &format, const paramlist &parameters, const sql_query_callback& cb);
-
 
 #ifdef DPP_CORO
 	/**
@@ -256,12 +263,6 @@ namespace db {
 	 * The parameters given should be a vector of strings. You can instantiate this using "{}".
 	 * The queries are cached as prepared statements and therefore do not need quote symbols
 	 * to be placed around parameters in the query. These will be automatically added if required.
-	 * 
-	 * For example:
-	 * 
-	 * ```cpp
-	 * 	db::query("UPDATE foo SET bar = ? WHERE id = ?", { "baz", 3 });
-	 * ```
 	 */
 	resultset query(const std::string &format, const paramlist &parameters, double lifetime);
 
@@ -270,16 +271,18 @@ namespace db {
 	 * 
 	 * @note This value is by any db::query() call. Take a copy!
 	 * @return size_t Number of affected rows
+	 * @deprecated This is not coroutine-safe and you should use resultset::affected_rows instead
 	 */
-	size_t affected_rows();
+	[[deprecated("Use resultset::affected_rows instead")]] size_t affected_rows();
 
 	/**
 	 * @brief Returns the last error string.
 	 * 
 	 * @note This value is by any db::query() call. Take a copy!
 	 * @return const std::string& Error mesage
+	 * @deprecated This is not coroutine-safe and you should use resultset::error instead
 	 */
-	const std::string& error();
+	[[deprecated("Use resultset::error instead")]] const std::string& error();
 
 	/**
 	 * @brief Returns the size of the query cache

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+  <compound refid="structdb_1_1resultset" kind="struct"><name>db::resultset</name>
+    <member refid="structdb_1_1resultset_1a86664b2b52696b3732e21453851dae5b" kind="variable"><name>rows</name></member>
+    <member refid="structdb_1_1resultset_1ad28608b9530c9de5cb0b9f1b87a7e785" kind="variable"><name>error</name></member>
+    <member refid="structdb_1_1resultset_1a389e90d46194b5d1bc34ea7f878f75cc" kind="variable"><name>affected_rows</name></member>
+    <member refid="structdb_1_1resultset_1a2fdff6a05bd78d7128aebc04fe73dab0" kind="function"><name>ok</name></member>
+    <member refid="structdb_1_1resultset_1a8a006c3139a16c2e3b07d68dfe85fb87" kind="function"><name>operator[]</name></member>
+    <member refid="structdb_1_1resultset_1a50bb1893834affc727cfef157b45c629" kind="function"><name>at</name></member>
+    <member refid="structdb_1_1resultset_1af55948e04805ad63260dda313ffa6a17" kind="function"><name>emplace_back</name></member>
+    <member refid="structdb_1_1resultset_1a028a9421200bdbf595e7d403f216988a" kind="function"><name>push_back</name></member>
+    <member refid="structdb_1_1resultset_1a4d375d8a0ae6689604445ba3a8cc50b0" kind="function"><name>begin</name></member>
+    <member refid="structdb_1_1resultset_1af93c2af8068d3e2476184a43913d495f" kind="function"><name>end</name></member>
+    <member refid="structdb_1_1resultset_1aff83375461c2464d3b1f112e45732e09" kind="function"><name>empty</name></member>
+    <member refid="structdb_1_1resultset_1a059b07133dfb34008790a954666d3d35" kind="function"><name>size</name></member>
+  </compound>
+  <compound refid="namespaceconfig" kind="namespace"><name>config</name>
+    <member refid="namespaceconfig_1a3b6fc04da34bbdb59ec978612c865538" kind="function"><name>init</name></member>
+    <member refid="namespaceconfig_1abda9d2a5f8aaf27890a20b26c1cd2f10" kind="function"><name>get</name></member>
+    <member refid="namespaceconfig_1a7948a6875d305616d8cebf8aaeeb6ae2" kind="function"><name>exists</name></member>
+  </compound>
+  <compound refid="namespacedb" kind="namespace"><name>db</name>
+    <member refid="namespacedb_1a9a28ec123a44c5f84d5957eb9f5ce96c" kind="typedef"><name>row</name></member>
+    <member refid="namespacedb_1a04e8c4c6ec113d7a0c0fc8e09cb2736e" kind="typedef"><name>sql_query_callback</name></member>
+    <member refid="namespacedb_1a5ab43b4eb6eb0a777ab4eaebec076f5f" kind="typedef"><name>parameter_type</name></member>
+    <member refid="namespacedb_1af7195db6c7dd62386e36f3d9ea0c24f8" kind="typedef"><name>paramlist</name></member>
+    <member refid="namespacedb_1a8a004a2115b829e9f7258f4f65fcbe0b" kind="function"><name>init</name></member>
+    <member refid="namespacedb_1aa2f6e9e0eb590eaf8ae67fba44cf6689" kind="function"><name>connect</name></member>
+    <member refid="namespacedb_1a4d0c7c86dc46a5ce6d6200248df5f9f0" kind="function"><name>close</name></member>
+    <member refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kind="function"><name>query</name></member>
+    <member refid="namespacedb_1aeb0f9df97c2f20440869770847ecde04" kind="function"><name>query_callback</name></member>
+    <member refid="namespacedb_1af873c3dbbe3724ee0e31953ade03f2bd" kind="function"><name>co_query</name></member>
+    <member refid="namespacedb_1a80cf41cd981806e9f418472a6d5e640b" kind="function"><name>query</name></member>
+    <member refid="namespacedb_1a20e993a57250f29c283e2215218c08ad" kind="function"><name>affected_rows</name></member>
+    <member refid="namespacedb_1ad9b1577c4b3310854fcfbbbd92e70c0b" kind="function"><name>error</name></member>
+    <member refid="namespacedb_1adda338dba46c43746e4a2e335e23123c" kind="function"><name>cache_size</name></member>
+    <member refid="namespacedb_1a211fc5ec27542766439426c02a051cc0" kind="function"><name>query_count</name></member>
+    <member refid="namespacedb_1a2b4f92b15fde6491a19818b96b0d79d9" kind="function"><name>transaction</name></member>
+    <member refid="namespacedb_1a7cba5870abb1d49fe0f9fe17dd8ef15f" kind="function"><name>co_transaction</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="config_8h" kind="file"><name>config.h</name>
+  </compound>
+  <compound refid="database_8h" kind="file"><name>database.h</name>
+  </compound>
+  <compound refid="deprecated" kind="page"><name>deprecated</name>
+  </compound>
+</doxygenindex>

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceconfig" kind="namespace" language="C++">
+    <compoundname>config</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceconfig_1a3b6fc04da34bbdb59ec978612c865538" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void config::init</definition>
+        <argsstring>(const std::string &amp;config_file)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>config_file</declname>
+        </param>
+        <briefdescription>
+<para>Initialise config file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Config file to read </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="config.h" line="30" column="6" declfile="config.h" declline="30" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceconfig_1abda9d2a5f8aaf27890a20b26c1cd2f10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>json &amp;</type>
+        <definition>json&amp; config::get</definition>
+        <argsstring>(const std::string &amp;key=&quot;&quot;)</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Get all config values from a specific key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key, if empty/omitted the root node is returned </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>json&amp; configuration or empty container if not found </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="config.h" line="38" column="6" declfile="config.h" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceconfig_1a7948a6875d305616d8cebf8aaeeb6ae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool config::exists</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>exists</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the specified key exists <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if key exists </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="config.h" line="45" column="6" declfile="config.h" declline="45" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="config.h" line="23" column="1"/>
+  </compounddef>
+</doxygen>

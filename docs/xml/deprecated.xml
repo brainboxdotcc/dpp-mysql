@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="deprecated" kind="page">
+    <compoundname>deprecated</compoundname>
+    <title>Deprecated List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="namespacedb_1a20e993a57250f29c283e2215218c08ad" kindref="member">db::affected_rows</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000001"/>This is not coroutine-safe and you should use <ref refid="structdb_1_1resultset_1a389e90d46194b5d1bc34ea7f878f75cc" kindref="member">resultset::affected_rows</ref> instead  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="namespacedb_1ad9b1577c4b3310854fcfbbbd92e70c0b" kindref="member">db::error</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000002"/>This is not coroutine-safe and you should use <ref refid="structdb_1_1resultset_1ad28608b9530c9de5cb0b9f1b87a7e785" kindref="member">resultset::error</ref> instead </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="deprecated"/>
+  </compounddef>
+</doxygen>

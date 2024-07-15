@@ -1,0 +1,11 @@
+<map id="db::resultset" name="db::resultset">
+<area shape="rect" id="node1" title="Definition of a result set. Supports iteration and accessing its rows via operator[] and at()...." alt="" coords="177,288,280,315"/>
+<area shape="rect" id="node2" title=" " alt="" coords="72,199,132,225"/>
+<area shape="rect" id="node3" title=" " alt="" coords="156,199,301,225"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,102,140,129"/>
+<area shape="rect" id="node5" title=" " alt="" coords="48,5,87,32"/>
+<area shape="rect" id="node6" title=" " alt="" coords="161,5,200,32"/>
+<area shape="rect" id="node7" title=" " alt="" coords="164,102,293,129"/>
+<area shape="rect" id="node8" title=" " alt="" coords="335,199,421,225"/>
+<area shape="rect" id="node9" title=" " alt="" coords="318,95,457,136"/>
+</map>

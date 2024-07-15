@@ -1,0 +1,569 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacedb" kind="namespace" language="C++">
+    <compoundname>db</compoundname>
+    <innerclass refid="structdb_1_1resultset" prot="public">db::resultset</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacedb_1a9a28ec123a44c5f84d5957eb9f5ce96c" prot="public" static="no">
+        <type>std::map&lt; std::string, std::string &gt;</type>
+        <definition>using db::row = typedef std::map&lt;std::string, std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>row</name>
+        <briefdescription>
+<para>Definition of a row in a result set. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="37" column="1" bodyfile="database.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacedb_1a04e8c4c6ec113d7a0c0fc8e09cb2736e" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structdb_1_1resultset" kindref="compound">resultset</ref> &amp;)&gt;</type>
+        <definition>using db::sql_query_callback = typedef std::function&lt;void(const resultset&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>sql_query_callback</name>
+        <briefdescription>
+<para>A callback which happens when an asynchronous SQL query is completed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="141" column="1" bodyfile="database.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacedb_1a5ab43b4eb6eb0a777ab4eaebec076f5f" prot="public" static="no">
+        <type>std::variant&lt; float, std::string, uint64_t, int64_t, bool, int32_t, uint32_t, double &gt;</type>
+        <definition>using db::parameter_type = typedef std::variant&lt;float, std::string, uint64_t, int64_t, bool, int32_t, uint32_t, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>parameter_type</name>
+        <briefdescription>
+<para>Possible parameter types for SQL parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="146" column="1" bodyfile="database.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespacedb_1af7195db6c7dd62386e36f3d9ea0c24f8" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="namespacedb_1a5ab43b4eb6eb0a777ab4eaebec076f5f" kindref="member">parameter_type</ref> &gt;</type>
+        <definition>using db::paramlist = typedef std::vector&lt;parameter_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>paramlist</name>
+        <briefdescription>
+<para>A list of database query parameters. These will be translated into prepared statement arguments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="152" column="1" bodyfile="database.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacedb_1a8a004a2115b829e9f7258f4f65fcbe0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void db::init</definition>
+        <argsstring>(dpp::cluster &amp;bot)</argsstring>
+        <name>init</name>
+        <param>
+          <type>dpp::cluster &amp;</type>
+          <declname>bot</declname>
+        </param>
+        <briefdescription>
+<para>Initialise database connection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>creating D++ cluster </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="159" column="6" declfile="database.h" declline="159" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1aa2f6e9e0eb590eaf8ae67fba44cf6689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool db::connect</definition>
+        <argsstring>(const std::string &amp;host, const std::string &amp;user, const std::string &amp;pass, const std::string &amp;db, int port=3306, const std::string &amp;socket=&quot;&quot;)</argsstring>
+        <name>connect</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>user</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pass</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>db</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>port</declname>
+          <defval>3306</defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>socket</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Connect to database and set options. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Database hostname </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Database username </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Database password </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Database schema name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Database port number </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unix socket path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the database connection succeeded</para>
+</simplesect>
+<simplesect kind="note"><para>Unix socket and port number are mutually exclusive. If you set socket to a non-empty string, you should set port to 0 and host to <computeroutput>localhost</computeroutput>. This is a special value in the mysql client and causes a unix socket connection to occur. If you do not want to use unix sockets, keep the value as an empty string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="177" column="6" declfile="database.h" declline="177" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a4d0c7c86dc46a5ce6d6200248df5f9f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool db::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <briefdescription>
+<para>Disconnect from database and free query cache. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on successful disconnection </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="184" column="6" declfile="database.h" declline="184" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a8e64d322c430542846327f26e9d00ff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdb_1_1resultset" kindref="compound">resultset</ref></type>
+        <definition>resultset db::query</definition>
+        <argsstring>(const std::string &amp;format, const paramlist &amp;parameters={})</argsstring>
+        <name>query</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacedb_1af7195db6c7dd62386e36f3d9ea0c24f8" kindref="member">paramlist</ref> &amp;</type>
+          <declname>parameters</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Run a mysql query, with automatic escaping of parameters to prevent SQL injection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string, where each parameter should be indicated by a ? symbol </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameters to prepare into the query in place of the ?&apos;s </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>result set</para>
+</simplesect>
+The parameters given should be a vector of strings. You can instantiate this using &quot;{}&quot;. The queries are cached as prepared statements and therefore do not need quote symbols to be placed around parameters in the query. These will be automatically added if required.</para>
+<para>For example:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query</ref>(</highlight><highlight class="stringliteral">&quot;UPDATE<sp/>foo<sp/>SET<sp/>bar<sp/>=<sp/>?<sp/>WHERE<sp/>id<sp/>=<sp/>?&quot;</highlight><highlight class="normal">,<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;baz&quot;</highlight><highlight class="normal">,<sp/>3<sp/>});</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="203" column="11" declfile="database.h" declline="203" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1aeb0f9df97c2f20440869770847ecde04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void db::query_callback</definition>
+        <argsstring>(const std::string &amp;format, const paramlist &amp;parameters, const sql_query_callback &amp;cb)</argsstring>
+        <name>query_callback</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacedb_1af7195db6c7dd62386e36f3d9ea0c24f8" kindref="member">paramlist</ref> &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacedb_1a04e8c4c6ec113d7a0c0fc8e09cb2736e" kindref="member">sql_query_callback</ref> &amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Run a mysql query asynchronously, with automatic escaping of parameters to prevent SQL injection. Call the callback on completion. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string, where each parameter should be indicated by a ? symbol </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameters to prepare into the query in place of the ?&apos;s </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback to call on completion of the query. The callback will be passed the resultset as its parameter.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+The parameters given should be a vector of strings. You can instantiate this using &quot;{}&quot;. The queries are cached as prepared statements and therefore do not need quote symbols to be placed around parameters in the query. These will be automatically added if required.</para>
+<para><simplesect kind="note"><para>If you can you should use co_query instead to avoid callback hell. co_query uses this internally, wrapping it with dpp::async&lt;&gt;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="221" column="6" declfile="database.h" declline="221" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1af873c3dbbe3724ee0e31953ade03f2bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>dpp::async&lt; <ref refid="structdb_1_1resultset" kindref="compound">resultset</ref> &gt;</type>
+        <definition>dpp::async&lt;resultset&gt; db::co_query</definition>
+        <argsstring>(const std::string &amp;format, const paramlist &amp;parameters={})</argsstring>
+        <name>co_query</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacedb_1af7195db6c7dd62386e36f3d9ea0c24f8" kindref="member">paramlist</ref> &amp;</type>
+          <declname>parameters</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Run a mysql query, with automatic escaping of parameters to prevent SQL injection. This is the coroutine asynchronous version of <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query</ref>. It will complete its dpp::async once the query has finished without blocking, by means of a separate thread. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string, where each parameter should be indicated by a ? symbol </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameters to prepare into the query in place of the ?&apos;s </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>dpp::async which you can co_await to get the result set.</para>
+</simplesect>
+<simplesect kind="note"><para>It is the nature of asynchronous APIs like this that they cannot be atomic. Therefore do not combine transactions with asynchronous co_query. If you do, other queries may end up muddled into your transaction. This wrapper ensures the correct order of statements passed to co_query from the same origin thread, however statements from other threads, or statements via <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query()</ref> instead are not queued. Pick one interface, or the other!</para>
+</simplesect>
+The parameters given should be a vector of strings. You can instantiate this using &quot;{}&quot;. The queries are cached as prepared statements and therefore do not need quote symbols to be placed around parameters in the query. These will be automatically added if required.</para>
+<para>For example:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rs<sp/>=<sp/>co_await<sp/><ref refid="namespacedb_1af873c3dbbe3724ee0e31953ade03f2bd" kindref="member">db::co_query</ref>(</highlight><highlight class="stringliteral">&quot;SELECT<sp/>*<sp/>FROM<sp/>bigtable<sp/>WHERE<sp/>bar<sp/>=<sp/>?&quot;</highlight><highlight class="normal">,<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;baz&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="249" column="12" declfile="database.h" declline="249" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a80cf41cd981806e9f418472a6d5e640b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdb_1_1resultset" kindref="compound">resultset</ref></type>
+        <definition>resultset db::query</definition>
+        <argsstring>(const std::string &amp;format, const paramlist &amp;parameters, double lifetime)</argsstring>
+        <name>query</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacedb_1af7195db6c7dd62386e36f3d9ea0c24f8" kindref="member">paramlist</ref> &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>lifetime</declname>
+        </param>
+        <briefdescription>
+<para>Run a mysql query, with automatic escaping of parameters to prevent SQL injection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string, where each parameter should be indicated by a ? symbol </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameters to prepare into the query in place of the ?&apos;s </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lifetime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>How long to cache this query&apos;s resultset in memory for </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>result set</para>
+</simplesect>
+<simplesect kind="note"><para>If the query is already cached in memory, the cached resultset will be returned instead of querying the database.</para>
+</simplesect>
+The parameters given should be a vector of strings. You can instantiate this using &quot;{}&quot;. The queries are cached as prepared statements and therefore do not need quote symbols to be placed around parameters in the query. These will be automatically added if required. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="267" column="11" declfile="database.h" declline="267" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a20e993a57250f29c283e2215218c08ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t db::affected_rows</definition>
+        <argsstring>()</argsstring>
+        <name>affected_rows</name>
+        <briefdescription>
+<para>Returns number of affected rows from an UPDATE, INSERT, DELETE. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This value is by any <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query()</ref> call. Take a copy! </para>
+</simplesect>
+<simplesect kind="return"><para>size_t Number of affected rows </para>
+</simplesect>
+<xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>This is not coroutine-safe and you should use <ref refid="structdb_1_1resultset_1a389e90d46194b5d1bc34ea7f878f75cc" kindref="member">resultset::affected_rows</ref> instead </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="276" column="9" declfile="database.h" declline="276" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1ad9b1577c4b3310854fcfbbbd92e70c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; db::error</definition>
+        <argsstring>()</argsstring>
+        <name>error</name>
+        <briefdescription>
+<para>Returns the last error string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This value is by any <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query()</ref> call. Take a copy! </para>
+</simplesect>
+<simplesect kind="return"><para>const std::string&amp; Error mesage </para>
+</simplesect>
+<xrefsect id="deprecated_1_deprecated000002"><xreftitle>Deprecated</xreftitle><xrefdescription><para>This is not coroutine-safe and you should use <ref refid="structdb_1_1resultset_1ad28608b9530c9de5cb0b9f1b87a7e785" kindref="member">resultset::error</ref> instead </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="285" column="20" declfile="database.h" declline="285" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1adda338dba46c43746e4a2e335e23123c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t db::cache_size</definition>
+        <argsstring>()</argsstring>
+        <name>cache_size</name>
+        <briefdescription>
+<para>Returns the size of the query cache. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Prepared statement handles are stored in a std::map along with their metadata, so that they don&apos;t have to be re-prepared if they are executed repeatedly. This is a diagnostic and informational function which returns the size of that map.</para>
+<para><simplesect kind="return"><para>size_t Cache size </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="296" column="8" declfile="database.h" declline="296" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a211fc5ec27542766439426c02a051cc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t db::query_count</definition>
+        <argsstring>()</argsstring>
+        <name>query_count</name>
+        <briefdescription>
+<para>Returns total number of queries executed since connection was established. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>size_t Query counter </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="303" column="8" declfile="database.h" declline="303" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a2b4f92b15fde6491a19818b96b0d79d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void db::transaction</definition>
+        <argsstring>(std::function&lt; bool()&gt; closure, sql_query_callback callback={})</argsstring>
+        <name>transaction</name>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>closure</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacedb_1a04e8c4c6ec113d7a0c0fc8e09cb2736e" kindref="member">sql_query_callback</ref></type>
+          <declname>callback</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Start an SQL transaction. SQL transactions are atomic in nature, ALL other queries will be forced to wait. The transaction will be inserted into the queue to run as one atomic operation, meaning that <ref refid="namespacedb_1af873c3dbbe3724ee0e31953ade03f2bd" kindref="member">db::co_query</ref> cannot disrupt it or insert queries in the middle of it, and <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query</ref> function calls that are not within the closure will be forced to wait. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>closure</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transactional code to execute. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback to call when the transaction completes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The closure should only ever execute queries using <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query()</ref>, it should NOT use async queries/co_query() as these cannot be executed atomically. Returning false from the closure, or throwing any exception at all will roll back the transaction, else it will be committed when the closure ends. </para>
+</simplesect>
+<simplesect kind="warning"><para>The coroutine will execute asynchronously in a different thread. You should use the callback to be notified when it completes. The resultset passed as the parameter will be empty. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="326" column="6" declfile="database.h" declline="326" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacedb_1a7cba5870abb1d49fe0f9fe17dd8ef15f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>dpp::async&lt; <ref refid="structdb_1_1resultset" kindref="compound">resultset</ref> &gt;</type>
+        <definition>dpp::async&lt;resultset&gt; db::co_transaction</definition>
+        <argsstring>(std::function&lt; bool()&gt; closure)</argsstring>
+        <name>co_transaction</name>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>closure</declname>
+        </param>
+        <briefdescription>
+<para>Start an SQL transaction in a coroutine that can be awaited. SQL transactions are atomic in nature, ALL other queries will be forced to wait. The transaction will be inserted into the queue to run as one atomic operation, meaning that <ref refid="namespacedb_1af873c3dbbe3724ee0e31953ade03f2bd" kindref="member">db::co_query</ref> cannot disrupt it or insert queries in the middle of it, and <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query</ref> function calls that are not within the closure will be forced to wait. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>closure</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The transactional code to execute. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Awaitable, returns an empty resultset on completion of transaction</para>
+</simplesect>
+<simplesect kind="note"><para>The closure should only ever execute queries using <ref refid="namespacedb_1a8e64d322c430542846327f26e9d00ff6" kindref="member">db::query()</ref>, it should NOT use async queries/co_query() as these cannot be executed atomically. Returning false from the closure, or throwing any exception at all will roll back the transaction, else it will be committed when the closure ends. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="database.h" line="347" column="12" declfile="database.h" declline="347" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Database abstraction layer Abstracts mysql C connector, supporting prepared statements and caching. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="database.h" line="32" column="1"/>
+  </compounddef>
+</doxygen>
