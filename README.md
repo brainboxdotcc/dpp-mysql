@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
 	bot.on_ready([&bot](const dpp::ready_t& event) -> dpp::task<void> {
 
 		auto rs = co_await db::co_query("SELECT * FROM bigtable WHERE bar = ?", { "baz" });
-		if (!rs.error.empty()) {
+		if (!rs.ok()) {
 			std::cout << "SQL error: " << rs.error << "\n";
 			co_return;
 		}

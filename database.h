@@ -56,6 +56,15 @@ namespace db {
 		size_t affected_rows{};
 
 		/**
+		 * Returns true if the query succeeded
+		 * @return true if no error
+		 */
+		[[nodiscard]] inline bool ok() const {
+			return error.empty();
+		}
+
+
+		/**
 		 * Get a row by index
 		 * @param index row to retrieve
 		 * @return row
