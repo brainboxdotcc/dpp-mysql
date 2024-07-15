@@ -21,10 +21,6 @@ Doxygen documentation can be found on [github pages](https://brainboxdotcc.githu
 * fmtlib
 * A C++ compiler capable of building D++ bots with coroutine support, if you want to use the asynchronous interface
 
-## Documentation
-
-All functions in the `db` namespace have Doxygen comment blocks.
-
 ## Using the wrapper
 
 ### Simple Queries
