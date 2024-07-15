@@ -461,6 +461,7 @@ namespace db {
 			cc.st = mysql_stmt_init(&connection);
 			if (mysql_stmt_prepare(cc.st, format.c_str(), format.length())) {
 				log_error(format, mysql_stmt_error(cc.st));
+				rv.error = mysql_stmt_error(cc.st);
 				mysql_stmt_close(cc.st);
 				return rv;
 			}
@@ -468,9 +469,10 @@ namespace db {
 			/* Check the parameter count provided matches that which MySQL expects */
 			size_t expected_param_count = mysql_stmt_param_count(cc.st);
 			if (parameters.size() != expected_param_count) {
-				log_error(format, "Incorrect number of parameters: " + format + " (" + std::to_string(parameters.size()) + " vs " + std::to_string(expected_param_count) + ")");
+				rv.error = "Incorrect number of parameters: " + format + " (" + std::to_string(parameters.size()) + " vs " + std::to_string(expected_param_count) + ")";
+				log_error(format, rv.error);
 				mysql_stmt_close(cc.st);
-				return rv;			
+				return rv;
 			}
 
 			/* Allocate memory for awful C stuff 🐉 */
@@ -519,6 +521,7 @@ namespace db {
 			/* Bind parameters to statement */
 			if (mysql_stmt_bind_param(cc.st, (MYSQL_BIND*)cc.bindings)) {
 				log_error(format, mysql_stmt_error(cc.st));
+				rv.error = mysql_stmt_error(cc.st);
 				return rv;
 			}
 		}
@@ -532,8 +535,9 @@ namespace db {
 			result = mysql_stmt_execute(cc.st);
 			if (result) {
 				log_error(format, mysql_stmt_error(cc.st));
+				rv.error = mysql_stmt_error(cc.st);
 			} else {
-				rows_affected = mysql_stmt_affected_rows(cc.st);
+				rv.affected_rows = rows_affected = mysql_stmt_affected_rows(cc.st);
 			}
 		} else {
 			/**
@@ -610,6 +614,7 @@ namespace db {
 				}
 			} else {
 				log_error(format, mysql_stmt_error(cc.st));
+				rv.error = mysql_stmt_error(cc.st);
 			}
 		}
 
