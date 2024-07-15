@@ -44,6 +44,10 @@
   </compound>
   <compound refid="database_8h" kind="file"><name>database.h</name>
   </compound>
+  <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
   <compound refid="deprecated" kind="page"><name>deprecated</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
   </compound>
 </doxygenindex>

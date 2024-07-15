@@ -25,6 +25,15 @@
 var NAVTREE =
 [
   [ "DPP-MySQL", "index.html", [
+    [ "A simple asynchronous MySQL wrapper for D++ bots", "index.html", [
+      [ "Documentation", "index.html#autotoc_md1", null ],
+      [ "Dependencies", "index.html#autotoc_md2", null ],
+      [ "Documentation", "index.html#autotoc_md3", null ],
+      [ "Using the wrapper", "index.html#autotoc_md4", [
+        [ "Simple Queries", "index.html#autotoc_md5", null ],
+        [ "Using Transactions", "index.html#autotoc_md6", null ]
+      ] ]
+    ] ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
